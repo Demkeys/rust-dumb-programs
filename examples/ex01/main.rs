@@ -2,11 +2,6 @@ use std::{collections::HashMap, io::stdin};
 // use std::str::FromStr;
 use rand::RngExt;
 
-struct Pet {
-    name: String,
-    mood: Mood,
-}
-
 #[derive(Debug, Eq, PartialEq, Hash)]
 enum Mood {
     Bored,
@@ -80,9 +75,19 @@ fn main() {
     let mut rng = rand::rng(); // Random number generator
     let mut user_input = String::new(); // Input buffer
 
-    println!("Enter something:");
+    println!(
+        "Welcome to Goofy Terminal Virtual Pet!
+Select an Action to take with the pet. That will change the pet's mood, and the
+pet with respond according to it's mood."
+    );
 
     loop {
+        println!(
+            "Select Action: 
+(0) Feed, (1) Pet, (2) Scold, (3) Ignore, (q) Quit Program
+Enter your action number (or q if you want to quit) and press Enter."
+        );
+
         // Get user input
         stdin().read_line(&mut user_input).unwrap();
 
@@ -119,5 +124,6 @@ fn main() {
             println!("Exiting.");
             break;
         }
+        println!("----------------------------------------------");
     }
 }
